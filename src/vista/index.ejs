@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consulta del Clima</title>
+
+    <link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>🌤 Consulta del Clima</h1>
+
+        <form action="/weather" method="POST">
+
+            <input
+                type="text"
+                name="city"
+                placeholder="Ingresa una ciudad..."
+            >
+
+            <button type="submit">
+                Consultar
+            </button>
+
+        </form>
+
+        <% if(error){ %>
+
+            <div class="error">
+                <%= error %>
+            </div>
+
+        <% } %>
+
+        <% if(weather){ %>
+
+            <div class="weather-card">
+
+                <h2>
+                    <%= weather.city %>, <%= weather.country %>
+                </h2>
+
+                <img src="<%= weather.icon %>" alt="weather icon">
+
+                <h3>
+                    <%= weather.temperature %>°C
+                </h3>
+
+                <p>
+                    <%= weather.description %>
+                </p>
+
+                <p>
+                    💧 Humedad: <%= weather.humidity %>%
+                </p>
+
+                <p>
+                    💨 Viento: <%= weather.windSpeed %> km/h
+                </p>
+
+            </div>
+
+        <% } %>
+
+    </div>
+
+</body>
+
+</html>
